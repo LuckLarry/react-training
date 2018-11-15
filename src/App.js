@@ -8,11 +8,13 @@ class App extends React.Component{
 		const num = store.getState()
 		const addGun = this.props.addGun
 		const removeGun = this.props.removeGun
+		const removeGunAsync = this.props.removeGunAsync
 		return (
 				<div>
 				<h1>有机枪{num}把</h1>
 				<button onClick={()=>store.dispatch(addGun())}>申请武器</button>
 				<button onClick={()=>store.dispatch(removeGun())}>上交武器</button>
+				<button onClick={()=>store.dispatch(removeGunAsync())}>延迟上交武器</button>
 				</div>
 			)
 

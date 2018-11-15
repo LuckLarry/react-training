@@ -22,6 +22,14 @@ export function removeGun(){
 	return {type:REMOVE_GUN}
 }
 
+export function removeGunAsync(){
+	return dispatch=>{
+		setTimeout(()=>{
+			dispatch(addGun())
+		},2000)
+	}
+}
+
 
 
 
