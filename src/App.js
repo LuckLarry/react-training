@@ -2,7 +2,11 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {addGun,removeGun,removeGunAsync} from './index.redux'
 
-
+@connect(
+	//要state什么属性放到props里
+    (state)=>{return {num:state}},
+	//要什么方法,放到props里面,自动执行
+	{addGun,removeGun,removeGunAsync})
 class App extends React.Component{
 
 	render(){
@@ -18,10 +22,4 @@ class App extends React.Component{
 	}
 }
 
-const mapStateToProps = (state)=>{
-	return {num:state}
-}
-const actionCreators = {addGun,removeGun,removeGunAsync}
-
-App = connect(mapStateToProps,actionCreators)(App)
 export default App
