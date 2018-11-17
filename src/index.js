@@ -3,7 +3,7 @@ import ReactDom from 'react-dom'
 import { createStore,applyMiddleware,compose} from 'redux'
 import  thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import { BrowserRouter,Route,Link } from 'react-router-dom'
+import { BrowserRouter,Route,Link, Redirect,Switch} from 'react-router-dom'
 
 import App from './App'
 import { counter} from './index.redux'
@@ -37,8 +37,16 @@ ReactDom.render(
 					<li><Link to="/erying">二营</Link></li>
 					<li><Link to="/qibinglian">骑兵连</Link></li>
 				</ul>
-				<Route path="/" exact component={App}></Route>
-				<Route path="/:location" component={Test}></Route>
+                {/*<Redirect to="/qibinglian"/>*/}
+                {/*<Redirect to="/erying"/>//Redirect以最后一个为主*/}
+
+				<Switch>
+					{/*只渲染命中的第一个Router*/}
+					<Route path="/" exact component={App}></Route>
+                    <Route path="/erying" exact component={Erying}></Route>
+                    <Route path="/qibinglian" exact component={Qibinglian}></Route>
+                    <Route path="/:location" component={Test}/>
+				</Switch>
 			</div>
 		</BrowserRouter>
     </Provider>),
