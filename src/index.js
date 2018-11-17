@@ -19,6 +19,13 @@ function Qibinglian(){
 	return <h2>骑兵连</h2>
 }
 
+class Test extends React.Component{
+	render (){
+		console.log(this.props)
+		// this.props.history.push("/")
+		return <h2>测试组件{this.props.match.params.location}</h2>
+	}
+}
 
 ReactDom.render(
 	(<Provider store={ store} >
@@ -28,11 +35,10 @@ ReactDom.render(
 					{/*点击对应的link调到匹配的<Route/> 去*/}
  					<li><Link to="/">一营</Link></li>
 					<li><Link to="/erying">二营</Link></li>
-					<li><Link to="qibinglian">骑兵连</Link></li>
+					<li><Link to="/qibinglian">骑兵连</Link></li>
 				</ul>
 				<Route path="/" exact component={App}></Route>
-				<Route path="/erying" component={Erying}></Route>
-				<Route path="/qibinglian" component={Qibinglian}></Route>
+				<Route path="/:location" component={Test}></Route>
 			</div>
 		</BrowserRouter>
     </Provider>),
