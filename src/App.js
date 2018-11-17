@@ -4,7 +4,7 @@ import {addGun,removeGun,removeGunAsync} from './index.redux'
 
 @connect(
 	//要state什么属性放到props里
-    (state)=>{return {num:state}},
+    (state)=>{return {num:state.counter}},
 	//要什么方法,放到props里面,方法自动执行
 	{addGun,removeGun,removeGunAsync})
 class App extends React.Component{
