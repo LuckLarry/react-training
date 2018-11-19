@@ -15,13 +15,16 @@ import AuthRoute from './component/authroute/authroute'
 const store = createStore(reducers,
 	compose(applyMiddleware(thunk),window.devToolsExtension?window.devToolsExtension(): f=>f)
 )
-
+function Boss(){
+	return <h2>boss页面</h2>
+}
 
 ReactDom.render(
 	(<Provider store={ store} >
 		<BrowserRouter>
 			<div>
 			<AuthRoute></AuthRoute>
+			<Route path='/boss' component={Boss}></Route>
 			<Route path='/login' component={Login}></Route>
 			<Route path='/register' component={Register}></Route>
 			</div>
