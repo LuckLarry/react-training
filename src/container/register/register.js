@@ -9,8 +9,18 @@ import {List,Radio,InputItem,WingBlank,WhiteSpace,Button} from 'antd-mobile'
  	constructor(props){
  		super(props)
  		this.state={
+ 			user:'',
+ 			pwd:'',
+ 			repeatpwd:'',
  			type:'genius'
  		}
+ 		this.handleRegister = this.handleRegister.bind(this)
+ 	}
+ 	handleChange(key,val){
+
+ 	}
+ 	handleRegister(){
+ 		console.log(this.state)
  	}
 
 
@@ -21,20 +31,24 @@ import {List,Radio,InputItem,WingBlank,WhiteSpace,Button} from 'antd-mobile'
  				<Logo/>
  				<h2>我是注册页</h2>
  				<List>
- 					<InputItem>用户</InputItem>
+ 					<InputItem onChange={v=>this.handleChange('user',v)}>用户</InputItem>
  					<WhiteSpace/>
- 					<InputItem>密码</InputItem>
+ 					<InputItem type='password' onChange={v=>this.handleChange('pwd',v)}>密码</InputItem>
  					<WhiteSpace/>
- 					<InputItem>确认密码</InputItem>
+ 					<InputItem type='password' onChange={v=>this.handleChange('repeatpwd',v)}>确认密码</InputItem>
  					<WhiteSpace/>
- 					<RadioItem checked={this.state.type=='genuis'}>
+ 					<RadioItem checked={this.state.type=='genuis'}
+ 						onChange={()=>this.handleChange('type','genuis')}
+ 						>
  						牛人
  					</RadioItem>
- 					<RadioItem checked={this.state.type=='boss'}>
+ 					<RadioItem checked={this.state.type=='boss'}
+ 					onChange={()=>this.handleChange('type','boss')}>
  						老板
  					</RadioItem>
-
- 					<Button type='primary'>注册</Button>
+ 					<WhiteSpace/>
+ 					<WhiteSpace/>
+ 					<Button type='primary' onClick={this.handleRegister}>注册</Button>
  				</List>
  			</div>
  		)
