@@ -1,17 +1,25 @@
 const express = require('express')
-const mongoose = require('mongoose')
 
-const DB_URL = 'mongodb://localhost:27017/imooc'
+const userRouter = require('./user')
 
-mongoose.connect(DB_URL)
-mongoose.connection.on('connected',function(){
-	console.log('mongo connnect success')
+const app = express()
+app.use('/user',userRouter)
+app.listen(9093,function(){
+	console.log('server start at port 9093')
 })
 
-const User = mongoose.model('user',new mongoose.Schema({
-	user:{type:String,require:true},
-	age:{type:Number,require:true}
-}))
+
+// const DB_URL = 'mongodb://localhost:27017/imooc'
+
+// mongoose.connect(DB_URL)
+// mongoose.connection.on('connected',function(){
+// 	console.log('mongo connnect success')
+// })
+
+// const User = mongoose.model('user',new mongoose.Schema({
+// 	user:{type:String,require:true},
+// 	age:{type:Number,require:true}
+// }))
 
 // //新增数据
 // User.create({
@@ -33,21 +41,16 @@ const User = mongoose.model('user',new mongoose.Schema({
 // 	console.log(doc)
 // })
 
-const app = express()
-app.get("/",function(req,res){
-	res.send("aaaaa")
-})
+// app.get("/",function(req,res){
+// 	res.send("aaaaa")
+// })
 
-app.get('/data',function(req,res){
-	User.findOne({user:'小明'},function(err,doc){
-		res.json(doc)
-	})
-})
+// app.get('/data',function(req,res){
+// 	User.findOne({user:'小明'},function(err,doc){
+// 		res.json(doc)
+// 	})
+// })
 
-
-app.listen(9093,function(){
-	console.log('server start at port 9093')
-})
 
 
 
