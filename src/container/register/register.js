@@ -22,14 +22,14 @@ class Register extends React.Component{
  		this.handleRegister = this.handleRegister.bind(this)
  	}
  	handleChange(key,val){
-		this.state[key] = val
-        console.log(this.state)
+		this.setState({[key]: val})
+		console.log(key,val)
+        // console.log(this.getState())
  	}
  	handleRegister(){
  		console.log(this.props.msg)
  		this.props.register(this.state)
  	}
-
 
  	render(){
  		const RadioItem = Radio.RadioItem
