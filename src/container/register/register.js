@@ -21,9 +21,11 @@ class Register extends React.Component{
  		this.handleRegister = this.handleRegister.bind(this)
  	}
  	handleChange(key,val){
-
+		this.state[key] = val
+        console.log(this.state)
  	}
  	handleRegister(){
+ 		console.log(this.props.msg)
  		this.props.register(this.state)
  	}
 
