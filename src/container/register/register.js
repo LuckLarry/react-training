@@ -1,10 +1,14 @@
 import React from 'react'
 import Logo from '../../component/logo/logo'
 import {List,Radio,InputItem,WingBlank,WhiteSpace,Button} from 'antd-mobile'
+import { connect } from 'react-redux'
+import {register} from "../../redux/user.redux";
 
-
-
- class Register extends React.Component{
+@connect(
+	state=>state.user,
+	{register}
+)
+class Register extends React.Component{
 
  	constructor(props){
  		super(props)
@@ -20,7 +24,7 @@ import {List,Radio,InputItem,WingBlank,WhiteSpace,Button} from 'antd-mobile'
 
  	}
  	handleRegister(){
- 		console.log(this.state)
+ 		this.props.register(this.state)
  	}
 
 
@@ -31,6 +35,7 @@ import {List,Radio,InputItem,WingBlank,WhiteSpace,Button} from 'antd-mobile'
  				<Logo/>
  				<h2>我是注册页</h2>
  				<List>
+					{this.props.msg?<p className='error-msg'>{this.props.msg}</p>:null}
  					<InputItem onChange={v=>this.handleChange('user',v)}>用户</InputItem>
  					<WhiteSpace/>
  					<InputItem type='password' onChange={v=>this.handleChange('pwd',v)}>密码</InputItem>
