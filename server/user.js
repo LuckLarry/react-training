@@ -1,4 +1,5 @@
 const express = require('express')
+const utils = require('utility')
 const Router = express.Router()
 const models = require('./model')
 
@@ -16,7 +17,7 @@ Router.post('/register',function(req,res){
         if(doc){
             return res.json({code:1,msg:'用户名重复'})
         }
-        User.create({user,pwd,type},function(e,d){
+        User.create({user,type,pwd:utils.md5(pwd)},function(e,d){
             if(e){
                 return res.json({code:1,msg:'后端出错'})
             }
@@ -29,5 +30,9 @@ Router.get('/info',function(req,res){
 	res.json("aaa")
 })
 
+function md5Pwd(pwd){
+    const salt = 'andy'
+    return utils.md5(pwd+salt)
+}
 
 module.exports = Router
