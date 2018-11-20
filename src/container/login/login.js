@@ -3,6 +3,7 @@ import Logo from '../../component/logo/logo'
 import {List,InputItem,WingBlank,WhiteSpace,Button} from 'antd-mobile'
 import {login} from '../../redux/user.redux'
 import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 
 @connect(
 	state=>state.user,
@@ -31,6 +32,7 @@ import {connect} from 'react-redux'
  	render(){
  		return (
  			<div>
+				{this.props.redirectTo?<Redirect to={this.props.redirectTo}/>:null}
  				<Logo/>
  				<h2>我是登录页</h2>
  				<WingBlank>
